@@ -11,7 +11,8 @@ if (isset($_POST["logout"])) {
   header("location: login.php");
 }
 
-
+$url = explode("/",$_SERVER["QUERY_STRING"]);
+print_r($url);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">

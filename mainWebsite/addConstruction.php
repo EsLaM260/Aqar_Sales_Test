@@ -158,8 +158,7 @@ if (isset($_POST["send"])) {
           $success = "تم الرفع بنجاح";
         }
       }
-    }
-    else{
+    } else {
       echo "false";
     }
   }
@@ -172,15 +171,15 @@ if (isset($_POST["send"])) {
         unlink($item["path"]);
       }
     }
-    print_r($errors);
   }
+  print_r($errors);
 }
 
 
 
 ?>
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -201,107 +200,55 @@ if (isset($_POST["send"])) {
 
 <body>
   <div class="addPage">
-    <!-- Start Sidebar -->
-    <aside>
-      <a class="logo" href="index.php">
-        <img src="image/logo.png" alt="Logo">
-      </a>
-      <ul>
-        <li>
-          <a href="index.php">
-            <span class="mdi mdi-view-dashboard"></span>
-            لوحة تحكم
-          </a>
-        </li>
-        <li class="sidebar-submenu">
-          <a href="">
-            <span class="mdi mdi-home-city"></span>
-            عقارات
-          </a>
-          <div class="sidebar-submenu-item">
-            <ul>
-              <li>
-                <a href="addProperty.php">
-                  أضافه عقار
-                </a>
-              </li>
-              <li>
-                <a href="showProperty.php">
-                  عرض العقارات
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="sidebar-submenu">
-          <a href="">
-            <span class="mdi mdi-home-city"></span>
-            مقاولات
-          </a>
-          <div class="sidebar-submenu-item">
-            <ul>
-              <li>
-                <a href="addConstruction.php">
-                  أضافه مقاولة
-                </a>
-              </li>
-              <li>
-                <a href="showConstruction.php">
-                  عرض المقاولات
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a href="clients.php">
-            <span class="mdi mdi-account-check"></span>
-            العملاء
-          </a>
-        </li>
-        <li>
-          <a href="website-data.php">
-            <span class="mdi mdi-web-check"></span>
-            تفاصيل الموقع
-          </a>
-        </li>
-      </ul>
-    </aside>
-    <!-- End Sidebar -->
-    <!-- Start Main Content -->
-    <main>
-      <!-- Start Header -->
-      <header>
-        <div class="first">
-          <div class="logo">
-            <a href="index.php">
-              <img src="image/logo.png" alt="">
+    <!-- Start Header -->
+    <header class="not_home">
+      <div class="container1">
+        <a href="../index.html" class="logo">
+          <img src="image/01.jpg" alt="Icon">
+        </a>
+        <ul>
+          <li class="language">
+            <a href="">
+              <img src="image/EnglashFlag.png" alt="EnglashFlag">
+              <span>English</span>
             </a>
-          </div>
-          <div class="tab">
-            <span class="mdi mdi-table-of-contents"></span>
-          </div>
-          <div class="search">
-            <input type="text" placeholder="ابحث">
-          </div>
+          </li>
+          <li>
+            <a href="login.php">Log In</a>
+          </li>
+          <li class="ads">
+            <a href="addproperty.php">Post property</a>
+          </li>
+          <li class="ads">
+            <a href="addConstruction.php">Post construction</a>
+          </li>
+        </ul>
+        <div class="responsiveMenu">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <div class="last">
-          <img src="image/profile.png" alt="profile">
-          <form action="index.php" method="post">
-            <button type="submit" name="logout">تسجيل خروج</button>
-          </form>
-        </div>
-      </header>
-      <!-- End Header -->
+      </div>
+    </header>
+    <!-- End Header -->
+    <div class="maincontent">
       <!-- Start Construction Form -->
       <section class="property-form">
-        <h1>اضافة مقاوله</h1>
+        <h1>
+          اضافة مقاوله
+          <?php if (!empty($success)) : ?>
+            <span class="success"> : <?= $success ?> </span>
+          <?php endif ?>
+        </h1>
         <div class="form">
           <form action="addConstruction.php" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-lg-4 col-md-6">
                 <div class="box">
                   <label for="">عنوان المقاوله</label>
+                  <?php if (!empty($errors["Err_title"])) : ?>
+                    <span class="error"> : <?= $errors["Err_title"] ?> </span>
+                  <?php endif ?>
                   <input type="text" name="title" placeholder="عنوان المقاوله" />
                 </div>
               </div>
@@ -364,6 +311,9 @@ if (isset($_POST["send"])) {
               <div class="col-lg-14 col-md-6">
                 <div class="box">
                   <label for="">العنوان</label>
+                  <?php if (!empty($errors["Err_address"])) : ?>
+                    <span class="error"> : <?= $errors["Err_address"] ?> </span>
+                  <?php endif ?>
                   <input type="text" name="address" placeholder="عنوان" />
                 </div>
               </div>
@@ -416,6 +366,9 @@ if (isset($_POST["send"])) {
               <div class="col-12">
                 <div class="box">
                   <label for="">وصف</label>
+                  <?php if (!empty($errors["Err_description"])) : ?>
+                    <span class="error"> : <?= $errors["Err_description"] ?> </span>
+                  <?php endif ?>
                   <textarea rows="3" name="description" placeholder="وصف"></textarea>
                 </div>
               </div>
@@ -445,6 +398,9 @@ if (isset($_POST["send"])) {
               <div class="col-12">
                 <div class="box">
                   <label for="">صور (اختر العديد من الصور)</label>
+                  <?php if (!empty($errors["image"])) : ?>
+                    <span class="error"> : <?= $errors["image"] ?> </span>
+                  <?php endif ?>
                   <div id="uploadContainer" onclick="document.getElementById('fileInput').click()">
                     <span class="mdi mdi-cloud-upload icon"></span>
                     <span>ارفع صورك</span>
@@ -460,8 +416,8 @@ if (isset($_POST["send"])) {
         </div>
       </section>
       <!-- End Construction Form -->
-    </main>
-    <!-- End Main Content -->
+    </div>
+
   </div>
   <!-- Script -->
   <script src="js/main.js" type="module"></script>

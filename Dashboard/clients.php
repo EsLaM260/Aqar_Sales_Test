@@ -8,7 +8,6 @@ if (!isset($_SESSION['username'])) {
 // ##################
 
 
-$username = "localhost";
 $connection = mysqli_connect("localhost", "root", "", "aqar_sales");
 $query = mysqli_query($connection, "SELECT * FROM `user`");
 $data = [];
@@ -185,12 +184,12 @@ while ($row = mysqli_fetch_assoc($query)) {
     <script src="js/main.js" type="module"></script>
     <script type="module">
 
-      let product  = <?= json_encode($data); ?>;
-      console.log(product);
+      let backenddata  = <?= json_encode($data); ?>;
+      //console.log(backenddata);
 
       import {displayAllProduct} from './js/displayProduct.js';
       import {checkId} from './js/verifyId.js';
-      displayAllProduct(product , checkId);
+      displayAllProduct(backenddata , checkId);
 
     </script>
   </body>

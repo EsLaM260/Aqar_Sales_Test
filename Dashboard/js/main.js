@@ -15,12 +15,22 @@ if (
   !location.href.includes("/changepassword.php")
 ) {
   sidebarDetails();
-  console.log("true");
 }
 // Start dashboard page
 
 // End dashboard page
 // Start page add Data
+if (
+  location.href.includes("/addProperty.php") ||
+  location.href.includes("/addConstruction.php")
+) {
+  console.log(location.href);
+  chooseYourLocation();
+  let uploadVideo = document.getElementById("fileInputVideo");
+  uploadVideo.addEventListener("change", (e) => {
+    handleFiles(e.target.files , "video");
+  });
+}
 if (
   location.href.includes("/addProperty.php") ||
   location.href.includes("/website-data.php") ||
@@ -29,14 +39,9 @@ if (
   selectDetails();
   let uploadImage = document.getElementById("fileInput");
   uploadImage.addEventListener("change", (e) => {
-    handleFiles(e.target.files);
+    handleFiles(e.target.files , "image");
   });
-}
-if (
-  location.href.includes("/addProperty.php") ||
-  location.href.includes("/addConstruction.php")
-) {
-  chooseYourLocation();
+
 }
 // End page add Data
 // Start Show Page

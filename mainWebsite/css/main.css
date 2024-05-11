@@ -5,7 +5,10 @@
   --primary-color-alt:#fde3d5;
   --main-background-color:#eee;
   --main-background-color-alt:#fafafa;
+  --second-background-color: white;
   --color-text:#778a99;
+
+  --border-shadow-color: #eee;
   /* transition */
   --transition:0.5s;
   /* font Awesome */
@@ -40,6 +43,9 @@ a:hover{
 a:active{
   text-decoration: none;
 }
+input {
+  border: none;
+}
 body{
   font-family: 'Avenir Roman';
 }
@@ -69,6 +75,71 @@ body{
   }
 }
 /* End Global Role */
+/* Start Login Page */
+.containerAll{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-image: url("../image/background01.jpg");
+
+}
+.containerAll .layer{
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.501);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerAll .layer form{
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+.containerAll .layer form h1{
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.containerAll .layer form #phoneDiv{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.containerAll .layer form input{
+  height: 100%;
+  width: 80%;
+  border: none;
+  outline: none;
+  padding: 0 0 10px 30px;
+  color: #333;
+  border-bottom: 1.5px solid #aaaaaa;
+  transition: all var(--transition) ease;
+}
+.containerAll .layer form select{
+  width: 20%;
+}
+.containerAll .layer form button{
+  width: 80%;
+  border: 1px solid var(--primary-color);
+  background-color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.containerAll .layer form button:hover{
+  background-color: var(--primary-color);
+  color: white;
+}
+.containerAll .layer form span{
+  position: absolute;
+  left: 20px;
+  font-size: 20px;
+    color: #707070;
+}
+/* End Login Page */
+/* Start Main Page */
 /*  Start Fixed Divs */
 
 /*  End Fixed Divs */
@@ -84,6 +155,12 @@ header{
   flex-wrap: wrap;
   align-items: start;
   transition: transform var(--transition);
+}
+header.not_home{
+  background-color: white;
+  position: sticky;
+  box-shadow: 0 0 10px var(--main-background-color);
+  z-index: 10000;
 }
 header.active{
   position: sticky;
@@ -144,6 +221,7 @@ header ul li.ads a{
   background-color: var(--primary-color);
   color: #fff;
   padding: 10px;
+  margin: 0 10px;
   border-radius: 5px;
   transition: var(--transition);
 }
@@ -374,42 +452,6 @@ header .responsiveMenu span{
   
 }
 /* End Banner */
-/* Start Ads Sec */
-.ads{
-  position: relative;
-}
-.ads .box{
-  width: 300px;
-  box-shadow: 2px 2px 30px var(--main-background-color);
-  border-radius: 10px;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-}
-.ads .box .slide-img{
-  height: 450px;
-}
-.ads .box .slide-img img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.ads .box .details-box{
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-.ads .box .details-box .type{
-  display: flex;
-}
-.ads .box .details-box .type{
-
-}
-/* End Ads Sec */
 /* Start intro sec */
 .intro{
   background-color: var(--main-background-color);
@@ -628,7 +670,296 @@ footer .secondbox .links div h3{
 }
 
 /* End Footer */
+/* End Main Page */
+/* End Add Page */
+.maincontent{
+  min-height: 100vh;
+  background-color: var(--main-background-color);
+  display: flex;
+  width: 100%;
+}
+.property-form {
+  margin: 20px;
+  padding: 20px;
+  background-color: var(--second-background-color);
+  border-radius: 8px;
+}
+.property-form h1 {
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 23px;
+  position: relative;
+}
+.property-form span.success {
+  text-align: right;
+  color: rgb(21, 202, 21);
+  font-size: 25px;
+}
+.property-form h1::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -20px;
+  right: -20px;
+  height: 1px;
+  background-color: var(--border-shadow-color);
+}
+.property-form .form {
+  padding: 20px 0;
+}
+.property-form .form .box {
+  margin-top: 10px;
+}
+.property-form .form .box label {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.property-form .form .box .error {
+  color: red;
+}
+.property-form .form .box input:not([type="checkbox"]) {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+  position: relative;
+  width: 100%;
+  padding: 6px 12px;
+  box-shadow: 0px 0px 2px var(--primary-color);
+  border-radius: 5px;
+  transition: var(--transition);
+}
+.property-form .form .box input:hover,
+.property-form .form .box input:focus {
+  box-shadow: 0px 0px 5px var(--primary-color);
+}
+/* Start Style of Select */
+.select-box {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+  position: relative;
+  width: 100%;
+  padding: 6px 28px 6px 12px;
+  box-shadow: 0px 0px 2px var(--primary-color);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.select-box:focus,
+.select-box:hover {
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 5px var(--primary-color);
+}
+.select-box::before {
+  content: "\f054";
+  font-family: var(--fa-style-family-classic);
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  font-size: 11px;
+  transition: var(--transition);
+}
+.select-box:hover::before,
+.select-box:focus::before {
+  transform: rotate(90deg);
+}
+.select-box .select-selected {
+  border: none;
+  cursor: pointer;
+}
+.select-box .select-items {
+  position: absolute;
+  background-color: white;
+  top: calc(100% + 1px);
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 5px;
+  opacity: 1;
+  visibility: visible;
+  height: 200px;
+  overflow-y: scroll;
+  transition: 0.3s;
+}
+.select-box .select-hide {
+  top: 50%;
+  opacity: 0;
+  visibility: hidden;
+}
+.select-box .select-items div {
+  padding: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.select-box .select-items div:hover {
+  background-color: var(--primary-color-opacity-2);
+}
+.select-box .select-items div.selected-item {
+  background-color: var(--primary-color-opacity-4);
+}
+/* End Style of Select */
+.property-form .form .box textarea {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+  position: relative;
+  width: 100%;
+  padding: 6px 12px;
+  box-shadow: 0px 0px 2px var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  resize: none;
+  transition: var(--transition);
+}
+.property-form .form .box textarea:hover,
+.property-form .form .box textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px var(--primary-color);
+}
+/* Start map area */
+.property-form .form .box #map {
+  height: 300px;
+}
+.property-form .form .box.stylemap h2 {
+  font-size: 25px;
+  text-align: center;
+  color: var(--primary-color);
+}
+/* Start image area */
+.property-form .form .box #uploadContainer {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  padding: 6px 12px;
+  box-shadow: 0px 0px 2px var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.property-form .form .box #uploadContainer:hover,
+.property-form .form .box #uploadContainer:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px var(--primary-color);
+}
+.property-form .form .box #uploadContainer .icon {
+  font-size: 45px;
+  margin-right: 10px;
+}
+.property-form .form .box #imageContainer,
+.property-form .form .box #videoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: absolute;
+  top: 55px;
+  left: 20px;
+}
+.property-form .form .box .image-wrapper {
+  position: relative;
+}
+.property-form .form .box .video-wrapper {
+  min-width: 240px;
+  position: relative;
+}
+.property-form .form .box .video-wrapper video {
+  width: 100%;
+  max-height: 130px;
+  position: absolute;
+}
+.property-form .form .box .image-wrapper img {
+  width: 130px;
+  height: 130px;
+  border-radius: 5px;
+}
+.property-form .form .box .image-wrapper video {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.property-form .form .box .delete-btn {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background-color: var(--main-background-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+/* End image area */
+.property-form .form .box.last {
+  display: flex;
+  flex-wrap: wrap;
+}
+.property-form .form .box .subbox {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+.property-form .form .box .subbox label {
+  margin: 0;
+  margin-left: 10px;
+  cursor: pointer;
+  color: var(--color-text);
+}
+.property-form .form button.submit {
+  color: var(--primary-color);
+  margin: 30px 0 0 20px;
+  padding: 5px 0;
+  width: 100px;
+  background-color: var(--second-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+.property-form .form button.submit:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+.property-form .form .box .subbox input[type="checkbox"] {
+  transition: var(--transition);
+  cursor: pointer;
+}
+/* Responsive */
+@media (max-width: 600px) {
+  .property-form .form .box #uploadContainer {
+    min-height: 200px;
+  }
+  .property-form .form .box .image-wrapper img {
+    width: 90px;
+    height: 90px;
+  }
+}
 
+
+/* test */
+.select-box {
+  display: none;
+}
+.box select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+}
+.stylemap input {
+  display: none;
+}
+
+
+/* End Add Page */
 /* Start Animations */
 @keyframes changebackground {
   0%{
