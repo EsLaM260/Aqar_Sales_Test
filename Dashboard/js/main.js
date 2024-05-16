@@ -22,7 +22,9 @@ if (
 // Start page add Data
 if (
   location.href.includes("/addProperty.php") ||
-  location.href.includes("/addConstruction.php")
+  location.href.includes("/addproperty.php") ||
+  location.href.includes("/addConstruction.php")||
+  location.href.includes("/addconstruction.php")
 ) {
   console.log(location.href);
   chooseYourLocation();
@@ -33,8 +35,10 @@ if (
 }
 if (
   location.href.includes("/addProperty.php") ||
+  location.href.includes("/addproperty.php") ||
   location.href.includes("/website-data.php") ||
-  location.href.includes("/addConstruction.php")
+  location.href.includes("/addConstruction.php")||
+  location.href.includes("/addconstruction.php")
 ) {
   selectDetails();
   let uploadImage = document.getElementById("fileInput");
@@ -47,8 +51,10 @@ if (
 // Start Show Page
 if (
   location.href.includes("/showProperty.php") ||
+  location.href.includes("/showproperty.php") ||
   // location.href.includes("/clients.php") ||
-  location.href.includes("/showConstruction.php")
+  location.href.includes("/showConstruction.php")||
+  location.href.includes("/showconstruction.php")
 ) {
   // the function have a function pramiter
   // the parmiter function have a click to show the id client and edit it
@@ -58,7 +64,9 @@ if (
 // Start Details property page
 if (
   location.href.includes("/detailsProperty.php") ||
-  location.href.includes("/detailsConstruction.php")
+  location.href.includes("/detailsproperty.php") ||
+  location.href.includes("/detailsConstruction.php")||
+  location.href.includes("/detailsconstruction.php")
 ) {
   displayYourLocation();
 }

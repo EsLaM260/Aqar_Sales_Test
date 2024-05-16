@@ -44,7 +44,7 @@ if (isset($_POST["send"])) {
   } else {
     $title = test_input($title);
     // check if title only contain letter and white space allowed
-    if (!preg_match("/^[a-zA-Z\d\s]*$/", $title)) {
+    if (!preg_match("/^[a-zA-Z\d\s\p{Arabic}]*$/u", $title)) {
       $errors["Err_title"] = "يُسمح فقط بالأحرف والأرقام والمسافات الاساسية";
     }
   }
@@ -74,7 +74,7 @@ if (isset($_POST["send"])) {
   } else {
     $address = test_input($address);
     // check if address only contain letter and white space allowed
-    if (!preg_match("/^[a-zA-Z\d\s]*$/", $address)) {
+    if (!preg_match("/^[a-zA-Z\d\s\p{Arabic}]*$/u", $address)) {
       $errors["Err_address"] = "يُسمح فقط بالأحرف والأرقام والمسافات الاساسية";
     }
   }
@@ -84,7 +84,7 @@ if (isset($_POST["send"])) {
   } else {
     $description = test_input($description);
     // check if description only contain letter and white space allowed
-    if (!preg_match("/^[a-zA-Z\d\s]*$/", $description)) {
+    if (!preg_match("/^[a-zA-Z\d\s\p{Arabic}]*$/u", $description)) {
       $errors["Err_description"] = "يُسمح فقط بالأحرف والأرقام والمسافات الاساسية";
     }
   }

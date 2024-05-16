@@ -31,7 +31,7 @@
           <a href="mainWebsite/login.php">Log In</a>
         </li>
         <li class="ads">
-          <a href="mainWebsite/addproperty.php">Post property</a>
+          <a href="mainWebsite/addProperty.php">Post property</a>
         </li>
         <li class="ads">
           <a href="mainWebsite/addConstruction.php">Post construction</a>

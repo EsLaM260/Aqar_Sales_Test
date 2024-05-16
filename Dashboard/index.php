@@ -1,4 +1,9 @@
 <?php
+// / or \ windows or linix
+// define("DS",DIRECTORY_SEPARATOR);
+// $url = explode("/",$_SERVER["QUERY_STRING"]);
+// print_r($url);
+
 // check have user or not
 session_start();
 // Check if the user is logged in
@@ -10,9 +15,22 @@ if (isset($_POST["logout"])) {
   session_destroy();
   header("location: login.php");
 }
+// connection 
+$conn =  mysqli_connect("localhost","root","","aqar_sales");
+// statistics
+function getNumber($conn,$query){
+  $res1 = mysqli_query($conn,$query);
+  $Number = mysqli_num_rows($res1);
+  return $Number;
+}
+$AllProperties = getNumber($conn,"SELECT * FROM `property`");
+$AllUser = getNumber($conn,"SELECT * FROM `user`");
+$AllConstructions = getNumber($conn,"SELECT * FROM `construction`");
+$propertiesOfSale = getNumber($conn,"SELECT * FROM `property` WHERE `property_category_id` = '1'");
+$propertiesOfRent = getNumber($conn,"SELECT * FROM `property` WHERE `property_category_id` = '2'");
+$propertiesOfDailyRent = getNumber($conn,"SELECT * FROM `property` WHERE `property_category_id` = '3'");
 
-$url = explode("/",$_SERVER["QUERY_STRING"]);
-print_r($url);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
@@ -136,7 +154,7 @@ print_r($url);
             <div class="box">
               <span>
                 <p>جميع المستخدمين</p>
-                <h2>246</h2>
+                <h2><?=$AllUser?></h2>
               </span>
               <span class="mdi mdi-account-group-outline icon"></span>
             </div>
@@ -145,7 +163,7 @@ print_r($url);
             <div class="box">
               <span>
                 <p>جميع العقارات</p>
-                <h2>246</h2>
+                <h2><?=$AllProperties?></h2>
               </span>
               <span class="mdi mdi-home-city icon"></span>
             </div>
@@ -153,8 +171,17 @@ print_r($url);
           <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="box">
               <span>
+                <p>جميع المقاولات</p>
+                <h2><?=$AllConstructions?></h2>
+              </span>
+              <span class="mdi mdi-account-hard-hat-outline icon"></span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="box">
+              <span>
                 <p>عقارات معروضه للبيع</p>
-                <h2>216</h2>
+                <h2><?=$propertiesOfSale?></h2>
               </span>
               <span class="mdi mdi-home-lightning-bolt-outline icon"></span>
             </div>
@@ -163,7 +190,7 @@ print_r($url);
             <div class="box">
               <span>
                 <p>عقارات معروضه للايجار</p>
-                <h2>30</h2>
+                <h2><?=$propertiesOfRent?></h2>
               </span>
               <span class="mdi mdi-home-clock icon"></span>
             </div>
@@ -171,12 +198,13 @@ print_r($url);
           <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="box">
               <span>
-                <p>جميع المقاولات</p>
-                <h2>300</h2>
+                <p>عقارات معروضه للايجار اليومي</p>
+                <h2><?=$propertiesOfDailyRent?></h2>
               </span>
-              <span class="mdi mdi-account-hard-hat-outline icon"></span>
+              <span class="mdi mdi-home-clock icon"></span>
             </div>
           </div>
+
         </div>
       </section>
       <!-- End Statistics -->
